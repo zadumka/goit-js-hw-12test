@@ -1,170 +1,136 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2e2f42;
   height: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
-.container {
-  display: flex;
-  gap: 8px;
-  margin-top: 36px;
-  margin-bottom: 32px;
+.form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 371px;
 }
 
 input {
-  width: 272px;
-  height: 40px;
-  border: 1px solid #808080;
+  width: 270px;
+  height: 38px;
   border-radius: 4px;
-  outline: transparent;
-  padding: 8px 16px;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0.04em;
-  color: #808080;
+  border: 1px solid #808080;
+  padding: 0px;
 }
 
-button {
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0.04em;
-  color: #fff;
-  align-items: center;
-  align-content: center;
-  border-radius: 8px;
+input:hover {
+  border: 1px solid #000000;
+}
+
+.form-btn {
+  color: #ffffff;
+  background-color: #4e75ff;
   width: 91px;
   height: 40px;
-  background: #4e75ff;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
 }
 
-button:hover {
-  background: #6c8cff;
-}
-.js-load-btn {
-  margin-bottom: 36px;
-}
-
-.js-load-btn.hidden {
-  display: none;
-}
-
-.loader {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: block;
-  margin: 15px auto;
-  position: relative;
-  box-sizing: border-box;
-  animation: zeroRotation 1s linear infinite alternate;
-}
-
-.loader::after,
-.loader::before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #ff3d00;
-  width: 16px;
-  height: 16px;
-  transform: translate(-50%, 50%);
-  border-radius: 50%;
-}
-
-.loader::before {
-  left: auto;
-  right: 0;
-  transform: translate(50%, 100%);
-}
-
-@keyframes zeroRotation {
-  0% {
-    transform: scale(1) rotate(0deg);
-  }
-
-  100% {
-    transform: scale(0) rotate(360deg);
-  }
-}
-
-.js-loader.hidden {
-  display: none;
+.form-btn:hover {
+  background-color: #6c8cff;
 }
 
 .gallery {
+  padding: 0px;
+  margin-left: 50px;
+  margin-right: 50px;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1440px;
-  gap: 24px;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 32px 0;
+  flex-direction: row;
   justify-content: center;
+  gap: 15px;
 }
 
 .gallery-item {
-  width: 360px;
-  height: auto;
-  border: 1px solid #ddd;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.gallery-link {
-  display: block;
-  width: 100%;
-  height: 100%;
+  list-style: none;
+  margin: 0px;
+  width: 300px;
+  height: 220px;
+  border: 1px solid #808080;
 }
 
 .gallery-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;
+  width: 300px;
+  height: 172px;
 }
 
-.image-info {
-  padding: 5px;
-  background-color: #fff;
-  font-size: 14px;
+.gallery-wrapper {
+  width: 300px;
+  height: 48px;
+  padding: 0px;
+}
+
+.gallery-group {
   list-style: none;
-  margin: 0;
   display: flex;
-  gap: 30px;
-  align-items: center;
   justify-content: center;
-  min-height: 48px;
-  width: 100%;
+  gap: 27px;
+  padding-left: 20px;
+  padding-right: 25px;
 }
 
-.text {
-  margin: 0;
-  font-family: var(--font-family);
+.gallery-subtitle {
+  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 12px;
-  line-height: 133%;
-  letter-spacing: 0.04em;
+  line-height: 16px;
   color: #2e2f42;
+  margin-top: 4px;
+  margin-bottom: 0px;
+  text-align: center;
 }
 
-.text-value {
-  margin: 0;
-  font-size: 12px;
+.gallery-txt {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
   color: #2e2f42;
+  margin-top: 0px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.loader {
+  width: 100px;
+  height: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-mask: linear-gradient(90deg, #000 70%, #0000 0) 0/20%;
+  background: linear-gradient(#000 0 0) 0/0% no-repeat #ddd;
+  animation: l4 2s infinite steps(6);
+}
+@keyframes l4 {
+  100% {
+    background-size: 120%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.gallery-btn {
+  color: #ffffff;
+  background-color: #4e75ff;
+  width: 125px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
