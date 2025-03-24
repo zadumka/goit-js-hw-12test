@@ -5,14 +5,17 @@ body {
   line-height: 24px;
   color: #2e2f42;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .form {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 371px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 600px;
+  flex-wrap: wrap;
 }
 
 input {
@@ -20,7 +23,7 @@ input {
   height: 38px;
   border-radius: 4px;
   border: 1px solid #808080;
-  padding: 0px;
+  padding: 0 8px;
 }
 
 input:hover {
@@ -42,76 +45,71 @@ input:hover {
 }
 
 .gallery {
-  padding: 0px;
-  margin-left: 50px;
-  margin-right: 50px;
+  padding: 0 20px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: center;
   gap: 15px;
+  max-width: 1200px;
 }
 
 .gallery-item {
   list-style: none;
-  margin: 0px;
   width: 300px;
-  height: 220px;
   border: 1px solid #808080;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .gallery-image {
   display: block;
-  width: 300px;
-  height: 172px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .gallery-wrapper {
-  width: 300px;
-  height: 48px;
-  padding: 0px;
+  padding: 8px 12px;
 }
 
 .gallery-group {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 27px;
-  padding-left: 20px;
-  padding-right: 25px;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery-list {
+  text-align: center;
 }
 
 .gallery-subtitle {
-  font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-  color: #2e2f42;
-  margin-top: 4px;
-  margin-bottom: 0px;
-  text-align: center;
+  margin: 0;
 }
 
 .gallery-txt {
-  font-family: Montserrat, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #2e2f42;
-  margin-top: 0px;
-  margin-bottom: 4px;
-  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 4px 0 0;
 }
 
 .loader {
   width: 100px;
   height: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
   -webkit-mask: linear-gradient(90deg, #000 70%, #0000 0) 0/20%;
   background: linear-gradient(#000 0 0) 0/0% no-repeat #ddd;
   animation: l4 2s infinite steps(6);
 }
+
 @keyframes l4 {
   100% {
     background-size: 120%;
@@ -131,6 +129,9 @@ input:hover {
   border: none;
   cursor: pointer;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
+}
+
+.gallery-btn:hover {
+  background-color: #6c8cff;
 }

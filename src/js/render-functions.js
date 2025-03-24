@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const galleryContainer = document.querySelector('.gallery'); 
+const galleryContainer = document.querySelector('.gallery');
 
 let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -21,11 +21,7 @@ export function imageTemplate(item) {
 
   return `<li class="gallery-item">
           <a class="gallery-link" href="${largeImageURL}">
-            <img
-              class="gallery-image"
-              src="${webformatURL}"
-              alt="${tags}"
-            />
+            <img class="gallery-image" src="${webformatURL}" alt="${tags}" />
           </a>
           <div class="gallery-wrapper">
             <ul class="gallery-group">
@@ -57,7 +53,7 @@ export function imagesTemplate(arr) {
 export function renderGallery(images) {
   const markup = imagesTemplate(images);
   galleryContainer.insertAdjacentHTML('beforeend', markup);
-  lightbox.refresh(); 
+  lightbox.refresh();
 }
 
 export function clearGallery() {
