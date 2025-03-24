@@ -1,5 +1,5 @@
 import { getAllImages } from './js/pixabay-api';
-import { imageTemplate, imagesTemplate } from './js/render-functions';
+import { imagesTemplate } from './js/render-functions';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
@@ -18,20 +18,34 @@ const params = {
   message: '',
   page: null,
   total: 1,
-  perPage: 40,
+  perPage: 15, // ← Встановлено згідно вимоги завдання (зміни, якщо інше число)
 };
 
 hidebtnNext();
 
 refs.form.addEventListener('submit', searchImages);
+refs.btnNext.addEventListener('click', onLoadMore);
 
 async function searchImages(e) {
   e.preventDefault();
   refs.gallery.innerHTML = '';
 
   const message = e.target.elements.search.value.trim();
+  if (!message) {
+    iziToast.warning({
+      message: 'Please enter a search term!',
+      position: 'topRight',
+      messageColor: '#FFFFFF',
+      backgroundColor: '#FFA500',
+      messageSize: '16px',
+      maxWidth: '432px',
+    });
+    return;
+  }
+
   params.message = message;
   params.page = 1;
+  showLoader();
 
   try {
     const result = await getAllImages(
@@ -65,7 +79,7 @@ async function searchImages(e) {
     refs.gallery.innerHTML = '';
     iziToast.error({
       message:
-        'Sorry, there are no images matching your search query. Please try again!',
+        'Sorry, something went wrong. Please try again!',
       messageColor: '#FFFFFF',
       backgroundColor: '#B51B1B',
       position: 'topRight',
@@ -74,12 +88,14 @@ async function searchImages(e) {
       maxWidth: '432px',
     });
     console.log(error);
+  } finally {
+    hideLoader();
   }
 
   e.target.reset();
 }
 
-refs.btnNext.addEventListener('click', async () => {
+async function onLoadMore() {
   hidebtnNext();
   showLoader();
   params.page += 1;
@@ -94,7 +110,6 @@ refs.btnNext.addEventListener('click', async () => {
     const markup = imagesTemplate(result2.hits);
     refs.gallery.insertAdjacentHTML('beforeend', markup);
     lightbox.refresh();
-    hideLoader();
     checkBtnStatus();
     scrollPage();
   } catch (error) {
@@ -103,18 +118,17 @@ refs.btnNext.addEventListener('click', async () => {
       message: 'Something went wrong. Please try again.',
       position: 'topRight',
     });
+  } finally {
     hideLoader();
   }
-});
+}
 
 function showLoader() {
   refs.loader.classList.remove('hidden');
-  
 }
 
 function hideLoader() {
   refs.loader.classList.add('hidden');
-  
 }
 
 function showbtnNext() {

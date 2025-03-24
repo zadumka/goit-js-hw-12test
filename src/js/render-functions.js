@@ -1,3 +1,12 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+const galleryContainer = document.querySelector('.gallery'); 
+
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 export function imageTemplate(item) {
   const {
@@ -43,4 +52,14 @@ export function imageTemplate(item) {
 
 export function imagesTemplate(arr) {
   return arr.map(imageTemplate).join('');
+}
+
+export function renderGallery(images) {
+  const markup = imagesTemplate(images);
+  galleryContainer.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh(); 
+}
+
+export function clearGallery() {
+  galleryContainer.innerHTML = '';
 }
